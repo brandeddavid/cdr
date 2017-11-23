@@ -13,7 +13,7 @@ for arg in sys.argv:
 
     if sys.argv.index(arg) > 0:
 
-        with open('standard.csv', 'w+', newline='') as l, open(arg,'r') as f, open(filename + str(sys.argv.index(arg)) + '.csv', 'wt') as outfile:
+        with open('standard.csv', 'a+', newline='') as l, open(arg,'r') as f, open(filename + str(sys.argv.index(arg)) + '.csv', 'w+') as outfile:
 
             fieldnames = ['Caller MSISDN','Callee MSISDN','Date','Time','Duration','Action Type','Caller IMEI','Callee IMEI','Caller IMSI','Callee IMSI','Base Station Position','Base Station ID','EndLocation','Latitude','Longitude','record_type','service_type','Data Source','ROAMING VPMN','CALLER ID/NAME LOOKUP','CALLEE ID/NAME LOOKUP']
 
@@ -36,8 +36,7 @@ for arg in sys.argv:
 
                 #l.truncate()
 
-
-            elif first_row[0][0] == 'A_NUMBER':
+            else: #first_row[0][0] == 'A_NUMBER':
 
                 for row in reader:
 
